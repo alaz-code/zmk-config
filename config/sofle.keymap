@@ -35,6 +35,19 @@
         };
     };
 
+    behaviors {
+        new_behavior: new_behavior {
+            compatible = "zmk,behavior-hold-tap";
+            label = "NEW_BEHAVIOR";
+            bindings = <&lt>, <&kp>;
+
+            #binding-cells = <2>;
+            hold-trigger-key-positions = <28 27 31 32>;
+            tapping-term-ms = <220>;
+            quick-tap-ms = <180>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -49,11 +62,11 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp GRAVE  &kp N1  &kp N2    &kp N3    &kp N4     &kp N5                                                   &kp N6       &kp N7     &kp N8     &kp N9    &kp N0    &kp DEL
-&kp ESC    &kp Q   &kp W     &kp E     &kp R      &kp T                                                    &kp Y        &kp U      &kp I      &kp O     &kp P     &kp BSPC
-&kp TAB    &kp A   &kp S     &lt 3 D   &lt 1 F    &kp G                                                    &kp H        &lt 2 J    &kp K      &kp L     &kp SEMI  &kp ENTER
-&kp LSHFT  &kp Z   &kp X     &kp C     &kp V      &kp B                      &kp C_MUTE         &none      &kp N        &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp BACKSLASH
-                   &kp LGUI  &kp LALT  &kp LCTRL  &mt LEFT_SHIFT LEFT_SHIFT  &lt 6 BACKSPACE    &lt 5 TAB  &lt 4 SPACE  &kp RCTRL  &kp RALT   &kp RGUI
+&kp GRAVE  &kp N1  &kp N2    &kp N3             &kp N4             &kp N5                                                   &kp N6                 &kp N7             &kp N8     &kp N9    &kp N0    &kp DEL
+&kp ESC    &kp Q   &kp W     &kp E              &kp R              &kp T                                                    &kp Y                  &kp U              &kp I      &kp O     &kp P     &kp BSPC
+&kp TAB    &kp A   &kp S     &new_behavior 3 D  &new_behavior 1 F  &kp G                                                    &kp H                  &new_behavior 2 J  &kp K      &kp L     &kp SEMI  &kp ENTER
+&kp LSHFT  &kp Z   &kp X     &kp C              &kp V              &kp B                      &kp C_MUTE         &none      &kp N                  &kp M              &kp COMMA  &kp DOT   &kp FSLH  &kp BACKSLASH
+                   &kp LGUI  &kp LALT           &kp LCTRL          &mt LEFT_SHIFT LEFT_SHIFT  &lt 6 BACKSPACE    &lt 5 TAB  &new_behavior 4 SPACE  &kp RCTRL          &kp RALT   &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
