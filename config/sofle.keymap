@@ -71,10 +71,10 @@
             //               |     |      |      |      |        |  |       |      |       |       |      |
 
             bindings = <
-&trans  &none  &none   &none   &none   &none                     &kp MINUS     &kp PLUS      &kp PERIOD    &kp ASTERISK  &kp SLASH  &none
-&none   &none  &none   &none   &none   &none                     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5     &kp PERCENT
-&trans  &none  &none   &none   &none   &none                     &kp NUMBER_6  &kp N7        &kp N8        &kp N9        &kp N0     &none
-&none   &none  &none   &none   &none   &none   &trans    &trans  &none         &none         &none         &none         &none      &trans
+&trans  &none  &none   &none   &none   &none                     &none         &none         &none         &none         &none      &none
+&none   &none  &none   &none   &none   &none                     &kp MINUS     &kp PLUS      &kp PERIOD    &kp ASTERISK  &kp SLASH  &none
+&trans  &none  &none   &none   &none   &none                     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5     &kp PERCENT
+&none   &none  &none   &none   &none   &none   &trans    &trans  &kp NUMBER_6  &kp N7        &kp N8        &kp N9        &kp N0     &none
                &trans  &trans  &trans  &trans  &trans    &trans  &trans        &trans        &trans        &trans
             >;
 
