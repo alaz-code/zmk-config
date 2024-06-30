@@ -6,6 +6,8 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/backlight.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/keys.h>
 
@@ -19,21 +21,13 @@
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
 
-    combos {
-        compatible = "zmk,combos";
-
-        game_1 {
-            bindings = <&none>;
-            key-positions = <5 6>;
-            layers = <0>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     keymap {
         compatible = "zmk,keymap";
 
         qwerty_layer {
-            display-name = "default";
+            display-name = "qwerty";
 
             // ------------------------------------------------------------------------------------------------------------
             // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |       |
@@ -43,18 +37,18 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp GRAVE  &kp N1  &kp N2    &kp N3    &kp N4     &kp N5                                                 &kp N6  &kp N7     &kp N8     &kp N9    &kp N0    &kp DEL
-&kp ESC    &kp Q   &kp W     &kp E     &kp R      &kp T                                                  &kp Y   &kp U      &kp I      &kp O     &kp P     &kp BSPC
-&kp TAB    &kp A   &kp S     &lt 3 D   &lt 1 F    &kp G                                                  &kp H   &none      &kp K      &kp L     &kp SEMI  &kp ENTER
-&kp LSHFT  &kp Z   &kp X     &kp C     &kp V      &kp B                      &kp C_MUTE         &none    &kp N   &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp BACKSLASH
-                   &kp LGUI  &kp LALT  &kp LCTRL  &mt LEFT_SHIFT LEFT_SHIFT  &lt 5 BACKSPACE    &kp TAB  &none   &kp RCTRL  &kp RALT   &kp RGUI
+&kp GRAVE  &kp N1  &kp N2    &kp N3    &kp N4     &kp N5                                                   &kp N6       &kp N7     &kp N8     &kp N9    &kp N0    &kp DEL
+&kp ESC    &kp Q   &kp W     &kp E     &kp R      &kp T                                                    &kp Y        &kp U      &kp I      &kp O     &kp P     &kp BSPC
+&kp TAB    &kp A   &kp S     &lt 3 D   &lt 1 F    &kp G                                                    &kp H        &none      &kp K      &kp L     &kp SEMI  &kp ENTER
+&kp MINUS  &kp Z   &kp X     &kp C     &kp V      &kp B                      &kp C_MUTE         &soft_off  &kp N        &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp BACKSLASH
+                   &kp LGUI  &kp LALT  &kp LCTRL  &mt LEFT_SHIFT LEFT_SHIFT  &lt 5 BACKSPACE    &lt 2 TAB  &lt 4 SPACE  &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         num_layer {
-            display-name = "lower";
+            display-name = "numbers";
 
             // TODO: Some binds are waiting for shifted keycode support.
             // ------------------------------------------------------------------------------------------------------------
@@ -76,7 +70,7 @@
         };
 
         nav_layer {
-            display-name = "raise";
+            display-name = "navigation";
 
             // ------------------------------------------------------------------------------------------------------------
             // | BTCLR | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
@@ -104,7 +98,7 @@
             // |        |         |         |         |         |         | RGB_TOG | |      |      |      |       |      |       |       |
             //                    |         |         |         |         |         | |      |      |      |       |      |
 
-            display-name = "adjust";
+            display-name = "fn";
             bindings = <
 &none  &none  &none         &none  &none           &none                  &none   &none   &none   &none   &none    &none
 &none  &none  &none         &none  &none           &none                  &none   &none   &none   &none   &none    &none
@@ -122,16 +116,20 @@
 &trans  &trans     &trans        &trans         &trans                &trans                 &trans    &trans  &trans          &trans           &trans     &trans           &trans     &trans
                    &trans        &trans         &trans                &trans                 &trans    &trans  &trans          &trans           &trans     &trans
             >;
+
+            label = "symbols";
         };
 
         ctrl_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &bl BL_TOG  &bl BL_ON                    &trans  &trans         &trans          &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans      &trans                       &trans  &kp LC(Z)      &kp LC(Y)       &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans      &trans                       &trans  &kp LC(C)      &kp LC(V)       &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans      &trans     &trans    &trans  &trans  &kp LG(LS(S))  &kp LG(SYSREQ)  &trans  &trans  &trans
-                &trans  &trans  &trans      &trans     &trans    &trans  &trans  &trans         &trans          &trans
+&trans  &trans          &trans      &trans      &bl BL_CYCLE  &bl BL_TOG                           &trans  &trans         &trans          &trans  &trans  &trans
+&trans  &bt BT_CLR_ALL  &bt BT_CLR  &bt BT_PRV  &bt BT_NXT    &ext_power EP_TOG                    &trans  &kp LC(Z)      &kp LC(Y)       &trans  &trans  &trans
+&trans  &trans          &trans      &trans      &trans        &trans                               &trans  &kp LC(C)      &kp LC(V)       &trans  &trans  &trans
+&trans  &trans          &trans      &trans      &trans        &trans             &trans    &trans  &trans  &kp LG(LS(S))  &kp LG(SYSREQ)  &trans  &trans  &trans
+                        &trans      &trans      &trans        &trans             &trans    &trans  &trans  &trans         &trans          &trans
             >;
+
+            label = "utility";
         };
     };
 };
