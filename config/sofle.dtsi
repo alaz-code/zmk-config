@@ -1,0 +1,12 @@
+/ {
+  chosen {
+    zmk,backlight = &backlight;
+  };
+
+  backlight: backlight_leds {
+    compatible = "gpio-leds";
+    label = "Backlight LEDs";
+    // Configure your backlight GPIO here
+    gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>;
+  };
+};
