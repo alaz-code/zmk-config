@@ -11,19 +11,23 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
 
-&led_strip {
-    chain-length = <8>;
+//&led_strip {
+  //  chain-length = <0>;
 
     // 21 backlight + 6 glowlight
-};
+//};
 
-#define BASE 0
-#define LOWER 1
-#define RAISE 2
-#define ADJUST 3
+//#define BASE 0
+//#define LOWER 1
+//#define RAISE 2
+//#define ADJUST 3
 
 / {
     // Activate ADJUST layer by pressing raise and lower
+
+     &led_strip {
+    chain-length = <29>;
+};
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
 
@@ -35,10 +39,10 @@
             key-positions = <0 11>;
         };
 
-        qwert {
-            bindings = <&tog 0>;
-            key-positions = <36 49>;
-        };
+        // qwert {
+        //    bindings = <&tog 0>;
+        //    key-positions = <36 49>;
+       // };
     };
 
     keymap {
@@ -59,7 +63,7 @@
 &kp ESC    &kp Q   &kp W     &kp E     &kp R      &kp T                                                    &kp Y        &kp U      &kp I      &kp O     &kp P     &kp BSPC
 &kp TAB    &kp A   &kp S     &lt 3 D   &lt 1 F    &kp G                                                    &kp H        &lt 2 J    &kp K      &kp L     &kp SEMI  &kp ENTER
 &kp MINUS  &kp Z   &kp X     &kp C     &kp V      &kp B                      &kp C_MUTE         &soft_off  &kp N        &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp BACKSLASH
-                   &kp LGUI  &kp LALT  &kp LCTRL  &mt LEFT_SHIFT LEFT_SHIFT  &lt 5 BACKSPACE    &lt 2 TAB  &lt 4 SPACE  &kp RCTRL  &kp RALT   &kp RGUI
+                   &kp LGUI  &kp LALT  &kp LCTRL  &kp LEFT_SHIFT  &lt 5 BACKSPACE    &lt 2 TAB  &lt 4 SPACE  &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
