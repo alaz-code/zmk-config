@@ -134,10 +134,10 @@
 
         ctrl_layer {
             bindings = <
-&trans           &trans           &trans           &trans           &bl BL_CYCLE     &bl BL_TOG                    &trans  &trans         &trans          &trans  &trans  &trans
+&trans           &trans           &trans           &trans           &trans      &trans                     &trans  &trans         &trans          &trans  &trans  &trans
 &trans           &bt BT_CLR_ALL   &bt BT_CLR       &bt BT_PRV       &bt BT_NXT       &none                         &trans  &kp LC(Z)      &kp LC(Y)       &trans  &trans  &trans
-&rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &rgb_ug RGB_EFR  &rgb_ug RGB_EFF  &rgb_ug RGB_TOG  &soft_off                     &trans  &kp LC(C)      &kp LC(V)       &trans  &trans  &trans
-&trans           &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &trans      &trans    &trans  &trans  &kp LG(LS(S))  &kp LG(SYSREQ)  &trans  &trans  &trans
+&trans   &trans   &trans   &trans   &trans   &soft_off                     &trans  &kp LC(C)      &kp LC(V)       &trans  &trans  &trans
+&trans           &trans   &trans  &trans   &trans   &trans      &trans    &trans  &trans  &kp LG(LS(S))  &kp LG(SYSREQ)  &trans  &trans  &trans
                                   &trans           &trans           &trans           &trans      &trans    &trans  &trans  &trans         &trans          &trans
             >;
 
