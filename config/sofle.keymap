@@ -25,9 +25,7 @@
 / {
     // Activate ADJUST layer by pressing raise and lower
 
-     &led_strip {
-    chain-length = <29>;
-     };
+     
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
 
