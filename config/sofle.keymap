@@ -27,6 +27,11 @@
             key-positions = <0 11>;
         };
 
+        game_2 {
+            bindings = <&tog 6>;
+            key-positions = <1 10>;
+        };
+
         // qwert {
         //    bindings = <&tog 0>;
         //    key-positions = <36 49>;
